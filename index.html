@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
+  </head>
+  <body class="page">
+    <!-- Header -->
+    <header class="header">
+      <img
+        class="header__logo"
+        src="./images/mesto-logo-white.svg"
+        alt="Логотип"
+     >
+    </header>
+
+    <!-- Content -->
+    <main class="content page__content">
+      <!-- Profile -->
+      <section class="profile content__section">
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+        <div class="profile__info">
+          <p class="profile__name">Жак-Ив Кусто</p>
+          <button class="profile__edit-button"></button>
+          <p class="profile__job">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button"></button>
+      </section>
+
+      <!-- Cards -->
+      <section class="content__section">
+        <ul class="cards">
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/Kalinigrad.jpeg"
+              alt="Калининград"
+           >
+            <div class="card__caption">
+              <p class="card__mane-card">Калининград</p>
+              <button class="card__like-button"></button>
+            </div>
+          </li>
+
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/St_Petersburg.jpeg"
+              alt="Санкт Петербург"
+           >
+            <div class="card__caption">
+              <p class="card__mane-card">Санкт-Петербург</p>
+              <button class="card__like-button"></button>
+            </div>
+          </li>
+
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/NizhnyNovgorod.jpeg"
+              alt="Нижний Новгород"
+            >
+            <div class="card__caption">
+              <p class="card__mane-card">
+                Нижний Новгород
+              </p>
+              <button class="card__like-button"></button>
+            </div>
+          </li>
+
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/DukinQuarry.jpeg"
+              alt="Дюкинский карьер"
+           >
+            <div class="card__caption">
+              <p class="card__mane-card">Дюкинский карьер</p>
+              <button class="card__like-button"></button>
+            </div>
+          </li>
+
+          <li class="card">
+            <img
+              class="card__image"
+              src="./images/Vladimir-Russian-village.jpeg"
+              alt="Владимир"
+           >
+            <div class="card__caption">
+              <p class="card__mane-card">Владимир</p>
+              <button class="card__like-button"></button>
+            </div>
+          </li>
+
+          <li class="card">
+            <img class="card__image" src="./images/Vyborg.jpeg" alt="Выборг">
+            <div class="card__caption">
+              <p class="card__mane-card">Выборг</p>
+              <button class="card__like-button"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+
+    <!-- Pop-Up -->
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__close"></button>
+        <form class="popup__form">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input
+            type="text"
+            class="popup__input-box"
+            id="name"
+            placeholder="Имя"
+            value="Жак-Ив Кусто"
+         >
+          <input
+            type="text"
+            class="popup__input-box"
+            id="job"
+            placeholder="О себе"
+            value="Исследователь океана"
+         >
+          <input
+            type="submit"
+            class="popup__submit"
+            value="Сохранить"
+          >
+        </form>
+      </div>
+    </section>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
