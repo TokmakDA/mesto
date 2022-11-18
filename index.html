@@ -120,7 +120,7 @@
     <section class="popup">
       <div class="popup__container">
         <button class="popup__close"></button>
-        <form class="popup__form">
+        <form class="popup__form" name="profile-form">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input
             type="text"
@@ -128,6 +128,7 @@
             id="name"
             placeholder="Имя"
             value="Жак-Ив Кусто"
+            name="profile-name"
          >
           <input
             type="text"
@@ -135,8 +136,13 @@
             id="job"
             placeholder="О себе"
             value="Исследователь океана"
+            name="profile-job"
          >
-          <input type="submit" class="popup__submit" value="Сохранить">
+          <input
+            type="submit"
+            class="popup__submit"
+            value="Сохранить"
+          >
         </form>
       </div>
     </section>
