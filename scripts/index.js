@@ -62,8 +62,8 @@ const initialCards = [
   }
 ];
 
-const cardsListElement = document.querySelector('.cards')
-const cardTemplate = document.querySelector('#card-template').content.querySelector('.card')
+const cardsListElement = document.querySelector('.cards');
+const cardTemplate = document.querySelector('#card-template').content.querySelector('.card');
 
 function createCards (item) {
 
@@ -74,18 +74,17 @@ function createCards (item) {
   const imageCard = card.querySelector('.card__image');
   imageCard.src = item.link;
   imageCard.alt = cardName.textContent =  item.name;
-  // cardName.textContent = item.mane;
 
 
   // Обработчики кликов для кнопок лайка и удаления
-  cardDeleteButton.addEventListener('click', handleDeleteButtonClick)
-  cardLikeButton.addEventListener('click', handleCardLikeButtonClick)
+  cardDeleteButton.addEventListener('click', handleDeleteButtonClick);
+  cardLikeButton.addEventListener('click', handleCardLikeButtonClick);
 
   return card;
 }
 
 const handleCardLikeButtonClick = (e) => {
-  e.target.classList.toggle('card__like-button_active')
+  e.target.classList.toggle('card__like-button_active');
 }
 
 
