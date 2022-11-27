@@ -36,77 +36,7 @@
       <!-- Cards -->
       <section class="content__section">
         <ul class="cards">
-          <li class="card">
-            <img
-              class="card__image"
-              src="./images/Kalinigrad.jpeg"
-              alt="Калининград"
-           >
-            <div class="card__caption">
-              <h2 class="card__mane-card">Калининград</h2>
-              <button class="card__like-button" type="button"></button>
-            </div>
-          </li>
 
-          <li class="card">
-            <img
-              class="card__image"
-              src="./images/St_Petersburg.jpeg"
-              alt="Санкт Петербург"
-           >
-            <div class="card__caption">
-              <h2 class="card__mane-card">Санкт-Петербург</h2>
-              <button class="card__like-button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="card">
-            <img
-              class="card__image"
-              src="./images/NizhnyNovgorod.jpeg"
-              alt="Нижний Новгород"
-           >
-            <div class="card__caption">
-              <h2 class="card__mane-card">Нижний Новгород</h2>
-              <button class="card__like-button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="card">
-            <img
-              class="card__image"
-              src="./images/DukinQuarry.jpeg"
-              alt="Дюкинский карьер"
-           >
-            <div class="card__caption">
-              <h2 class="card__mane-card">Дюкинский карьер</h2>
-              <button class="card__like-button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="card">
-            <img
-              class="card__image"
-              src="./images/Vladimir-Russian-village.jpeg"
-              alt="Владимир"
-           >
-            <div class="card__caption">
-              <h2 class="card__mane-card">Владимир</h2>
-              <button class="card__like-button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="card">
-            <img
-              class="card__image"
-              src="./images/Vyborg.jpeg"
-              alt="Выборг"
-            >
-            <div class="card__caption">
-              <h2 class="card__mane-card">Выборг</h2>
-              <button class="card__like-button" type="button"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -146,6 +76,23 @@
         </form>
       </div>
     </section>
+
+    <!-- Template -->
+    <template id="card-template">
+      <li class="card">
+        <button class="card__trash" type="button"></button>
+        <img
+          class="card__image"
+          src=""
+          alt=""
+        >
+        <div class="card__caption">
+          <h2 class="card__mane-card"></h2>
+          <button class="card__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
