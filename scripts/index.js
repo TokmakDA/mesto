@@ -1,14 +1,12 @@
 const popupElement = document.querySelector('.popup');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close');
 const profileInfo = document.querySelector('.profile');
-const profileEditButtonElement = profileInfo.querySelector(
-  '.profile__edit-button'
-);
-let profileName = profileInfo.querySelector('.profile__name');
-let profileJob = profileInfo.querySelector('.profile__job');
-let formElement = popupElement.querySelector('.popup__form');
-let nameInput = formElement.querySelector('#name');
-let jobInput = formElement.querySelector('#job');
+const profileEditButtonElement = profileInfo.querySelector('.profile__edit-button');
+const profileName = profileInfo.querySelector('.profile__name');
+const profileJob = profileInfo.querySelector('.profile__job');
+const formElement = popupElement.querySelector('.popup__form');
+const nameInput = formElement.querySelector('#name');
+const jobInput = formElement.querySelector('#job');
 
 function addPopup() {
   popupElement.classList.add('popup_is-opened');
@@ -34,7 +32,7 @@ popupCloseButtonElement.addEventListener('click', removePopup);
 
 
 // 5 спринт
-
+// Массив карочек
 const initialCards = [
   {
     name: 'Калининград',
@@ -75,7 +73,6 @@ function createCards (item) {
   imageCard.src = item.link;
   imageCard.alt = cardName.textContent =  item.name;
 
-
   // Обработчики кликов для кнопок лайка и удаления
   cardDeleteButton.addEventListener('click', handleDeleteButtonClick);
   cardLikeButton.addEventListener('click', handleCardLikeButtonClick);
@@ -86,7 +83,6 @@ function createCards (item) {
 const handleCardLikeButtonClick = (e) => {
   e.target.classList.toggle('card__like-button_active');
 }
-
 
 const handleDeleteButtonClick = (e) => {
   e.target.closest('.card').remove()
@@ -100,3 +96,4 @@ const renderCard = (item, wrapElement) => {
 initialCards.forEach(function(item) {
   renderCard(item, cardsListElement);
 });
+

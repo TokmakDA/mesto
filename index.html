@@ -47,7 +47,8 @@
     </footer>
 
     <!-- Pop-Up -->
-    <section class="popup">
+      <!-- Pop-Up Profile -->
+    <section class="popup popup_profile-form">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
         <form class="popup__form" name="profile-form">
@@ -74,6 +75,48 @@
             value="Сохранить"
           >
         </form>
+      </div>
+    </section>
+      <!-- Pop-Up Card -->
+    <section class="popup popup_card-form">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <form class="popup__form" name="new-card-form">
+          <h2 class="popup__title">Новое место</h2>
+          <input
+            type="text"
+            class="popup__input-box"
+            id="place-name"
+            placeholder="Название"
+            value=""
+            name="place-name"
+         >
+          <input
+            type="text"
+            class="popup__input-box"
+            id="place-link-img"
+            placeholder="Ссылка на картинку"
+            value=""
+            name="place-link-img"
+         >
+          <input
+            type="submit"
+            class="popup__submit"
+            value="Сохранить"
+          >
+        </form>
+      </div>
+    </section>
+      <!-- Pop-Up Card Image -->
+    <section class="popup popup_card-image">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <img
+          class="popup__image"
+          src="./images/Kalinigrad.jpeg"
+          alt="Калининград"
+        >
+        <h2 class="popup__title-image">Калининград</h2>
       </div>
     </section>
 
