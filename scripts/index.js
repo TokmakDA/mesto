@@ -1,41 +1,3 @@
-const popupProfileElement = document.querySelector('.popup_profile-form');
-const popupCloseButtonElement = popupProfileElement.querySelector('.popup__close');
-const profileInfo = document.querySelector('.profile');
-const profileEditButtonElement = profileInfo.querySelector('.profile__edit-button');
-const profileName = profileInfo.querySelector('.profile__name');
-const profileJob = profileInfo.querySelector('.profile__job');
-const formElement = popupProfileElement.querySelector('.popup__form');
-const nameInput = formElement.querySelector('#name');
-const jobInput = formElement.querySelector('#job');
-
-// Функция открытия попапа редактирования профиля
-function addProfilePopup() {
-  popupProfileElement.classList.add('popup_is-opened');
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-}
-
-// Функция закрытия попапа редактирования профиля
-function removeProfilePopup() {
-  popupProfileElement.classList.remove('popup_is-opened');
-}
-
-// Функция сохранения внесенной информации о профиле
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  removeProfilePopup();
-}
-
-//Обработчики клика на кнопку
-formElement.addEventListener('submit', formSubmitHandler);
-//Обработчики кликов
-profileEditButtonElement.addEventListener('click', addProfilePopup);
-popupCloseButtonElement.addEventListener('click', removeProfilePopup);
-
-
-// 5 спринт
 // Массив карточек
 const initialCards = [
   {
@@ -63,6 +25,16 @@ const initialCards = [
     link: './images/Vyborg.jpeg'
   }
 ];
+
+const popupProfileElement = document.querySelector('.popup_profile-form');
+const popupCloseButtonElement = popupProfileElement.querySelector('.popup__close');
+const profileInfo = document.querySelector('.profile');
+const profileEditButtonElement = profileInfo.querySelector('.profile__edit-button');
+const profileName = profileInfo.querySelector('.profile__name');
+const profileJob = profileInfo.querySelector('.profile__job');
+const formElement = popupProfileElement.querySelector('.popup__form');
+const nameInput = formElement.querySelector('#name');
+const jobInput = formElement.querySelector('#job');
 
 const cardsListElement = document.querySelector('.cards');
 const cardTemplate = document.querySelector('#card-template').content.querySelector('.card');
@@ -127,15 +99,10 @@ initialCards.forEach(function(item) {
   renderCard(item, cardsListElement);
 });
 
-
 //Функция открытия и закрытия попапа добавления карточек
 function CardPopup() {
   popupCardFormElement.classList.toggle('popup_is-opened');
 }
-
-// Обработчики клика для попапа добавления карточек
-addButtonCardElement.addEventListener('click', CardPopup);
-popupCardFormCloseButtonElement.addEventListener('click', CardPopup);
 
 // Функция добавления ифнормации новой карточки из попап
 const handleFormSubmit = (evt) => {
@@ -150,11 +117,42 @@ const handleFormSubmit = (evt) => {
   CardPopup();
 }
 
-// Обработчик клика сохранения новой карточки
-cardFormElement.addEventListener('submit', handleFormSubmit);
-
 // Функция закрытия попапа с картинкой
 function closeImagePopup() {
   popupImageElement.classList.toggle('popup_is-opened');
 }
 
+// Функция открытия попапа редактирования профиля
+function addProfilePopup() {
+  popupProfileElement.classList.add('popup_is-opened');
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+}
+
+// Функция закрытия попапа редактирования профиля
+function removeProfilePopup() {
+  popupProfileElement.classList.remove('popup_is-opened');
+}
+
+// Функция сохранения внесенной информации о профиле
+function formSubmitHandler(evt) {
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  removeProfilePopup();
+}
+
+//Обработчики клика на кнопку сохранение профиля
+formElement.addEventListener('submit', formSubmitHandler);
+//Обработчики кликов для попапа профиля
+profileEditButtonElement.addEventListener('click', addProfilePopup);
+popupCloseButtonElement.addEventListener('click', removeProfilePopup);
+
+
+// Обработчик клика сохранения новой карточки
+cardFormElement.addEventListener('submit', handleFormSubmit);
+
+
+// Обработчики клика для попапа добавления карточек
+addButtonCardElement.addEventListener('click', CardPopup);
+popupCardFormCloseButtonElement.addEventListener('click', CardPopup);
