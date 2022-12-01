@@ -90,6 +90,13 @@ const handleFormSubmit = (evt) => {
   renderCard(card, cardsListElement);
   togglePopup(1);
 }
+// Функция открытия попапа редактирования профиля
+function addCardPopup() {
+  placeNameInput.value = "";
+  placeLinkImageInput.value = "";
+
+  togglePopup(1);
+}
 
 // Функция открытия попапа редактирования профиля
 function addProfilePopup() {
@@ -118,7 +125,7 @@ popupCloseButtonElement.addEventListener('click', () => togglePopup(0));
 // Обработчик клика сохранения новой карточки
 cardFormElement.addEventListener('submit', handleFormSubmit);
 // Обработчики клика для попапа добавления карточек
-addButtonCardElement.addEventListener('click', () => togglePopup(1));
+addButtonCardElement.addEventListener('click', addCardPopup);
 popupCardFormCloseButtonElement.addEventListener('click', () => togglePopup(1));
 
 // Обработчики клика для закрытия картинки
