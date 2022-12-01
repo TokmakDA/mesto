@@ -1,30 +1,4 @@
-// Массив карточек
-const initialCards = [
-  {
-    name: 'Калининград',
-    link: './images/Kalinigrad.jpeg'
-  },
-  {
-    name: 'Санкт-Петербург',
-    link: './images/St_Petersburg.jpeg'
-  },
-  {
-    name: 'Нижний Новгород',
-    link: './images/NizhnyNovgorod.jpeg'
-  },
-  {
-    name: 'Дюкинский карьер',
-    link: './images/DukinQuarry.jpeg'
-  },
-  {
-    name: 'Владимир',
-    link: './images/Vladimir-Russian-village.jpeg'
-  },
-  {
-    name: 'Выборг',
-    link: './images/Vyborg.jpeg'
-  }
-];
+const popupElement = document.querySelectorAll('.popup');
 
 const popupProfileElement = document.querySelector('.popup_profile-form');
 const popupCloseButtonElement = popupProfileElement.querySelector('.popup__close');
@@ -66,17 +40,21 @@ function createCards (item) {
   cardLikeButton.addEventListener('click', handleCardLikeButtonClick);
 
   // Обработчики клика для открытия картинки
-  imageCard.addEventListener('click',  openImagePopup = () => {
-    popupImage.src = imageCard.src;
-    popupImage.alt = imageCard.alt;
-    popupTitleImage.textContent = cardName.textContent;
-    popupImageElement.classList.toggle('popup_is-opened');
-  }
-  );
-  // Обработчики клика для закрытия картинки
-  popupImageCloseButtonElement.addEventListener('click', closeImagePopup);
+  imageCard.addEventListener('click', () => openImagePopup(item),);
 
   return card;
+}
+
+// функция переключения класса для попапа (открыть-закрыть)
+function togglePopup(index) {
+  popupElement[index].classList.toggle('popup_is-opened');
+}
+
+// функция передающия данные при открытии попапа карточки
+function openImagePopup (item) {
+  popupImage.src = item.link;
+  popupTitleImage.textContent = popupImage.alt = item.name;
+  togglePopup(2);
 }
 
 // Функция обработчик нажатия на лайк
@@ -99,11 +77,6 @@ initialCards.forEach(function(item) {
   renderCard(item, cardsListElement);
 });
 
-//Функция открытия и закрытия попапа добавления карточек
-function CardPopup() {
-  popupCardFormElement.classList.toggle('popup_is-opened');
-}
-
 // Функция добавления ифнормации новой карточки из попап
 const handleFormSubmit = (evt) => {
   evt.preventDefault();
@@ -114,45 +87,35 @@ const handleFormSubmit = (evt) => {
   }
 
   renderCard(card, cardsListElement);
-  CardPopup();
-}
-
-// Функция закрытия попапа с картинкой
-function closeImagePopup() {
-  popupImageElement.classList.toggle('popup_is-opened');
+  togglePopup(1);
 }
 
 // Функция открытия попапа редактирования профиля
 function addProfilePopup() {
-  popupProfileElement.classList.add('popup_is-opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-}
-
-// Функция закрытия попапа редактирования профиля
-function removeProfilePopup() {
-  popupProfileElement.classList.remove('popup_is-opened');
+  togglePopup(0);
 }
 
 // Функция сохранения внесенной информации о профиле
-function formSubmitHandler(evt) {
+function handlerFormSubmitProfile(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  removeProfilePopup();
+  togglePopup(0);
 }
 
 //Обработчики клика на кнопку сохранение профиля
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', handlerFormSubmitProfile);
 //Обработчики кликов для попапа профиля
 profileEditButtonElement.addEventListener('click', addProfilePopup);
-popupCloseButtonElement.addEventListener('click', removeProfilePopup);
-
+popupCloseButtonElement.addEventListener('click', () => togglePopup(0));
 
 // Обработчик клика сохранения новой карточки
 cardFormElement.addEventListener('submit', handleFormSubmit);
-
-
 // Обработчики клика для попапа добавления карточек
-addButtonCardElement.addEventListener('click', CardPopup);
-popupCardFormCloseButtonElement.addEventListener('click', CardPopup);
+addButtonCardElement.addEventListener('click', () => togglePopup(1));
+popupCardFormCloseButtonElement.addEventListener('click', () => togglePopup(1));
+
+// Обработчики клика для закрытия картинки
+popupImageCloseButtonElement.addEventListener('click', () => togglePopup(2));
