@@ -54,6 +54,7 @@ function togglePopup(index) {
 function openImagePopup (item) {
   popupImage.src = item.link;
   popupTitleImage.textContent = popupImage.alt = item.name;
+
   togglePopup(2);
 }
 
@@ -94,14 +95,17 @@ const handleFormSubmit = (evt) => {
 function addProfilePopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+
   togglePopup(0);
 }
 
 // Функция сохранения внесенной информации о профиле
 function handlerFormSubmitProfile(evt) {
   evt.preventDefault();
+
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
+
   togglePopup(0);
 }
 
