@@ -1,4 +1,4 @@
-const popupElement = document.querySelectorAll('.popup');
+const popupElements = document.querySelectorAll('.popup');
 
 const popupProfileElement = document.querySelector('.popup_profile-form');
 const popupCloseButtonElement = popupProfileElement.querySelector('.popup__close');
@@ -47,7 +47,7 @@ function createCards (item) {
 
 // функция переключения класса для попапа (открыть-закрыть)
 function togglePopup(index) {
-  popupElement[index].classList.toggle('popup_is-opened');
+  popupElements[index].classList.toggle('popup_is-opened');
 }
 
 // функция передающия данные при открытии попапа карточки
