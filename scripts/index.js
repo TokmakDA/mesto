@@ -73,11 +73,6 @@ const renderCard = (item, wrapElement) => {
   wrapElement.prepend(element);
 }
 
-// колбэк-функция
-initialCards.forEach(function(item) {
-  renderCard(item, cardsListElement);
-});
-
 // Функция добавления ифнормации новой карточки из попап
 const handleFormSubmit = (evt) => {
   evt.preventDefault();
@@ -130,3 +125,9 @@ popupCardFormCloseButtonElement.addEventListener('click', () => togglePopup(1));
 
 // Обработчики клика для закрытия картинки
 popupImageCloseButtonElement.addEventListener('click', () => togglePopup(2));
+
+
+// колбэк-функция
+initialCards.forEach(function(item) {
+  renderCard(item, cardsListElement);
+});
