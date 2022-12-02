@@ -82,7 +82,7 @@ function addCardPopup(namePopupElement) {
   openPopup(namePopupElement);
 }
 // Функция добавления новой карточки из попап и закрытие попапа
-const handleFormSubmit = (evt) => {
+const handleFormSubmitCard = (evt) => {
   evt.preventDefault();
 
   const card = {
@@ -118,7 +118,7 @@ profileEditButtonElement.addEventListener('click', () => addProfilePopup(popupPr
 bottonClosePopupProfile.addEventListener('click', () => closePopup(popupProfileElement));
 
 // Обработчик клика сохранения новой карточки
-cardFormElement.addEventListener('submit', handleFormSubmit);
+cardFormElement.addEventListener('submit', handleFormSubmitCard);
 // Обработчики клика для попапа добавления карточек
 buttonOpenPopupCard.addEventListener('click', () => addCardPopup(popupCardFormElement));
 bottonClosePopupCardForm.addEventListener('click', () => closePopup(popupCardFormElement));
