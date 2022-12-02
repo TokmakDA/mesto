@@ -49,20 +49,20 @@ const renderCard = (item, wrapElement) => {
 }
 
 // функция добаления класса для попапа (открыть попап)
-function openPopup(namePopupElemetn) {
-  namePopupElemetn.classList.add('popup_is-opened');
+function openPopup(namePopupElement) {
+  namePopupElement.classList.add('popup_is-opened');
 }
 // функция удаления класса для попапа (закрыть попап)
-function closePopup(namePopupElemetn) {
-  namePopupElemetn.classList.toggle('popup_is-opened');
+function closePopup(namePopupElement) {
+  namePopupElement.classList.toggle('popup_is-opened');
 }
 
 // Функция открытия попапа редактирования профиля
-function addProfilePopup(namePopupElemetn) {
+function addProfilePopup(namePopupElement) {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 
-  openPopup(namePopupElemetn);
+  openPopup(namePopupElement);
 }
 // Функция добавления внесенной информации о профиле на страницу и закрытие попапа
 function handlerFormSubmitProfile(evt) {
@@ -75,11 +75,11 @@ function handlerFormSubmitProfile(evt) {
 }
 
 // Функция открытия попапа добавления карточки на страницу
-function addCardPopup(namePopupElemetn) {
+function addCardPopup(namePopupElement) {
   placeNameInput.value = "";
   placeLinkImageInput.value = "";
 
-  openPopup(namePopupElemetn);
+  openPopup(namePopupElement);
 }
 // Функция добавления новой карточки из попап и закрытие попапа
 const handleFormSubmit = (evt) => {
