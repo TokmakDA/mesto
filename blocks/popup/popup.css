@@ -9,5 +9,5 @@
   display: flex;
   visibility: hidden;
   opacity: 0;
-  transition: 0.7s;
+  transition:  0.7s;
 }
