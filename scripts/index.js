@@ -42,19 +42,31 @@ function createCards (item) {
 
   return card;
 }
+
 //Функция добавления карточки на страницу
 const renderCard = (item, wrapElement) => {
   const element = createCards(item);
   wrapElement.prepend(element);
 }
 
+// функция обработчик нажатия на Esc
+function handleKeyUp(evt) {
+  console.log(evt.key);
+  if (evt.key === 'Escape') {
+    closePopup();
+  }
+}
+document.addEventListener('keyup', handleKeyUp);
+
 // функция добаления класса для попапа (открыть попап)
 function openPopup(namePopupElement) {
   namePopupElement.classList.add('popup_is-opened');
+  document.addEventListener('keyup', handleKeyUp);
 }
 // функция удаления класса для попапа (закрыть попап)
-function closePopup(namePopupElement) {
-  namePopupElement.classList.toggle('popup_is-opened');
+function closePopup() {
+  document.querySelector('.popup_is-opened').classList.remove('popup_is-opened');
+  document.removeEventListener('keyup', handleKeyUp);
 }
 
 // Функция открытия попапа редактирования профиля
@@ -115,16 +127,17 @@ const handleButtonDeleteCardClick = (evt) => {
 formElement.addEventListener('submit', handlerFormSubmitProfile);
 //Обработчики кликов для попапа профиля
 profileEditButtonElement.addEventListener('click', () => addProfilePopup(popupProfileElement));
-bottonClosePopupProfile.addEventListener('click', () => closePopup(popupProfileElement));
+bottonClosePopupProfile.addEventListener('click', closePopup);
 
 // Обработчик клика сохранения новой карточки
 cardFormElement.addEventListener('submit', handleFormSubmitCard);
 // Обработчики клика для попапа добавления карточек
 buttonOpenPopupCard.addEventListener('click', () => addCardPopup(popupCardFormElement));
-bottonClosePopupCardForm.addEventListener('click', () => closePopup(popupCardFormElement));
+bottonClosePopupCardForm.addEventListener('click', closePopup);
 
 // Обработчики клика для закрытия картинки
-bottonClosePopupImage.addEventListener('click', () => closePopup(popupImageElement));
+bottonClosePopupImage.addEventListener('click', closePopup);
+
 
 // колбэк-функция
 initialCards.forEach(function(item) {
