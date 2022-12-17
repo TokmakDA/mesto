@@ -43,27 +43,32 @@ const enableValidation = (config) => {
 
 const hasInvalidInput = (inputList) => {
   return inputList.every((inputElement) => {
-    // Если все поля валидны, колбэк вернёт true
-    // hasInvalidInput вернёт true
+
     return inputElement.validity.valid;
   });
 }
-// функция переключения состояния кнопки
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    // сделай кнопку активной
-    buttonElement.classList.remove(config.inactiveButtonClass); //
-    buttonElement.disabled = '';
-  } else {
-    // иначе сделай кнопку неактивной
-    disableButton(config, buttonElement);
-  }
+
+// Сделать кнопку активной
+const activateButton = (config, buttonElement) => {
+  buttonElement.classList.remove(config.inactiveButtonClass);
+  buttonElement.disabled = '';
 }
 
 // Сделать кнопку неактивной
 const disableButton = (config, buttonElement) => {
   buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.disabled = 'disabled';
+}
+
+// функция переключения состояния кнопки
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    // сделай кнопку активной
+    activateButton(config, buttonElement);
+  } else {
+    // иначе сделай кнопку неактивной
+    disableButton(config, buttonElement);
+  }
 }
 
 const config = {
