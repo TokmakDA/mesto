@@ -43,8 +43,7 @@ const enableValidation = (config) => {
 
 const hasInvalidInput = (inputList) => {
   return inputList.every((inputElement) => {
-
-    return inputElement.validity.valid;
+    return inputElement.validity.valid; // проверит все поля и вернет true, если все поля валидны
   });
 }
 
