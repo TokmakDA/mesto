@@ -1,5 +1,4 @@
 const popupProfileElement = document.querySelector('.popup_profile-form');
-// const buttonClosePopupProfile = popupProfileElement.querySelector('.popup__close');
 const profileInfo = document.querySelector('.profile');
 const profileEditButtonElement = profileInfo.querySelector('.profile__edit-button');
 const profileName = profileInfo.querySelector('.profile__name');
@@ -11,15 +10,13 @@ const jobInput = formElement.querySelector('#profile-job');
 const cardsListElement = document.querySelector('.cards');
 const cardTemplate = document.querySelector('#card-template').content.querySelector('.card');
 const popupCardFormElement = document.querySelector('.popup_card-form');
-// const buttonClosePopupCardForm = popupCardFormElement.querySelector('.popup__close');
 const buttonOpenPopupCard = profileInfo.querySelector('.profile__add-button');
 const cardFormElement = popupCardFormElement.querySelector('.popup__form');
 const placeNameInput = cardFormElement.querySelector('#place-name');
 const placeLinkImageInput = cardFormElement.querySelector('#place-link-img');
-const buttonElement = cardFormElement.querySelector('.popup__button')
+const buttonElementCardForm = cardFormElement.querySelector('.popup__button')
 
 const popupImageElement = document.querySelector('.popup_card-image');
-// const buttonClosePopupImage = popupImageElement.querySelector('.popup__close');
 const popupImage = popupImageElement.querySelector('.popup__image');
 const popupTitleImage = popupImageElement.querySelector('.popup__title-image');
 
@@ -103,7 +100,7 @@ function handlerFormSubmitProfile(evt) {
 // Функция открытия попапа добавления карточки на страницу
 function openAddCardPopup () {
   cardFormElement.reset();
-  disableButton(buttonElement);
+  disableButton(config ,buttonElementCardForm);
   openPopup(popupCardFormElement);
 }
 // Функция добавления новой карточки из попап и закрытие попапа
@@ -140,16 +137,12 @@ const handleButtonDeleteCardClick = (evt) => {
 formElement.addEventListener('submit', handlerFormSubmitProfile);
 //Слушатель кликов для попапа профиля
 profileEditButtonElement.addEventListener('click', openProfilePopup);
-// buttonClosePopupProfile.addEventListener('click', closePopup);
 
 // Слушатель клика сохранения новой карточки
 cardFormElement.addEventListener('submit', handleFormSubmitCard);
-// Слушатель клика для попапа добавления карточек
+// Слушатель клика для открытия попапа добавления карточек
 buttonOpenPopupCard.addEventListener('click', () => openAddCardPopup(popupCardFormElement));
-// buttonClosePopupCardForm.addEventListener('click', closePopup);
 
-// Слушатель клика для закрытия картинки
-// buttonClosePopupImage.addEventListener('click', closePopup);
 
 // колбэк-функция для добавления карточек из массива
 initialCards.forEach(function(cardData) {
