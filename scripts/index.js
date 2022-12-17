@@ -66,13 +66,17 @@ const closePopupByClickOnOverlay = (evt) => {
 // функция добаления класса для попапа (открыть попап)
 function openPopup(namePopupElement) {
   namePopupElement.classList.add('popup_is-opened');
-  // Слушатель на закрытие попапа кликом на оверлей
+  // Добавить Слушатель на закрытие попапа кликом на оверлей
   namePopupElement.addEventListener('click', closePopupByClickOnOverlay);
+  // Добавить Слушатель кнопки для закрытия ппопапа нажатием на Escape
+  document.addEventListener('keyup', handleKeyUp);
 }
 
 // функция удаления класса для попапа (закрыть попап)
 function closePopup() {
   document.querySelector('.popup_is-opened').classList.remove('popup_is-opened');
+  // Удалить Слушатель кнопки для закрытия ппопапа нажатием на Escape
+  document.removeEventListener('keyup', handleKeyUp);
 }
 
 // Функция открытия попапа редактирования профиля
@@ -143,9 +147,6 @@ bottonClosePopupCardForm.addEventListener('click', closePopup);
 
 // Слушатель клика для закрытия картинки
 bottonClosePopupImage.addEventListener('click', closePopup);
-
-// Слушатель кнопки для закрытия ппопапа нажатием на Escape
-document.addEventListener('keyup', handleKeyUp);
 
 // колбэк-функция
 initialCards.forEach(function(item) {

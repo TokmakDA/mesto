@@ -8,7 +8,7 @@
   background: #000;
   border-radius: 2px;
   border: 1px solid #000000;
-  margin: 33px 0 0;
+  margin: 18px 0 0;
   height: 50px;
   transition: 0.3s;
 }
@@ -21,7 +21,7 @@
 @media screen and (max-width: 720px) {
   .popup__button {
     height: 46px;
-    margin-top: 30px;
+    margin-top: 15px;
     font-size: 14px;
     line-height: 17px;
   }
