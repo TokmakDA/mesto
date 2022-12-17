@@ -1,6 +1,8 @@
 .profile__info {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 24px;
   row-gap: 8px;
+  column-gap: 10px;
   max-width: 336px;
   margin: 0 30px;
   flex-wrap: wrap;
@@ -13,5 +15,7 @@
     margin-left: 0;
     margin-right: 0;
     justify-content: center;
+    grid-template-columns: auto 18px;
+
   }
 }
