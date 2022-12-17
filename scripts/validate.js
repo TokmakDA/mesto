@@ -30,10 +30,6 @@ const enableValidation = (config) => {
     const inputList = [...formElement.querySelectorAll(config.inputSelector)];
     const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
-    formElement.addEventListener('submit', (e) => {
-      e.preventDefault();
-    });
-
     toggleButtonState(inputList, buttonElement);
 
     inputList.forEach((inputElement) => {
@@ -60,10 +56,17 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.disabled = '';
   } else {
     // иначе сделай кнопку неактивной
-    buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.disabled = 'disabled';
+    disableButton(config, buttonElement);
+    // buttonElement.classList.add(config.inactiveButtonClass);
+    // buttonElement.disabled = 'disabled';
   }
-};
+}
+
+// Сделать кнопку неактивной
+const disableButton = (config, buttonElement) => {
+  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.disabled = 'disabled';
+}
 
 const config = {
   formSelector: '.popup__form',
