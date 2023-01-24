@@ -114,6 +114,7 @@ function openAddCardPopup () {
 
   openPopup(popupCardFormElement);
 }
+
 // Функция добавления новой карточки из попап и закрытие попапа
 const handleFormSubmitCard = (evt) => {
   evt.preventDefault();
@@ -126,17 +127,6 @@ const handleFormSubmitCard = (evt) => {
   renderCard(card, cardsListElement);
   closePopup(popupCardFormElement);
 }
-
-//Слушатель клика на кнопку сохранение профиля
-profileFormElement.addEventListener('submit', handlerFormSubmitProfile);
-//Слушатель кликов для попапа профиля
-profileEditButtonElement.addEventListener('click', openProfilePopup);
-
-// Слушатель клика сохранения новой карточки
-cardFormElement.addEventListener('submit', handleFormSubmitCard);
-// Слушатель клика для открытия попапа добавления карточек
-buttonOpenPopupCard.addEventListener('click', () => openAddCardPopup(popupCardFormElement));
-
 
 //Функция создания новой карточки карточки
 const addCard = (cardData) => {
@@ -155,11 +145,6 @@ initialCards.forEach(function(cardData) {
   renderCard(cardData, cardsListElement);
 });
 
-popups.forEach((popup) => {
-  // Добавить Слушатель на закрытие попапа кликом на оверлей и на крестик
-  popup.addEventListener('click', handleClosePopupByClick)
-});
-
 //создаем экземпляр класса FormValidator с вызовом метода запуска валидации
 const validateForm = (config, formElement) => {
   return new FormValidator(config, formElement).enableValidation();
@@ -168,3 +153,18 @@ const validateForm = (config, formElement) => {
 validateForm(config, profileFormElement);
 // включить валидацию форм карточки
 validateForm(config, cardFormElement);
+
+popups.forEach((popup) => {
+  // Добавить Слушатель на закрытие попапа кликом на оверлей и на крестик
+  popup.addEventListener('click', handleClosePopupByClick)
+});
+
+//Слушатель клика на кнопку сохранение профиля
+profileFormElement.addEventListener('submit', handlerFormSubmitProfile);
+//Слушатель кликов для попапа профиля
+profileEditButtonElement.addEventListener('click', openProfilePopup);
+
+// Слушатель клика сохранения новой карточки
+cardFormElement.addEventListener('submit', handleFormSubmitCard);
+// Слушатель клика для открытия попапа добавления карточек
+buttonOpenPopupCard.addEventListener('click', () => openAddCardPopup(popupCardFormElement));
