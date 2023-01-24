@@ -26,13 +26,13 @@ const checkInputValidity = (inputElement, config) => {
 const enableValidation = (config) => {
   const formList = [...document.querySelectorAll(config.formSelector)];
 
-  formList.forEach((formElement) => {
+  formList.forEach(formElement => {
     const inputList = [...formElement.querySelectorAll(config.inputSelector)];
     const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
     toggleButtonState(inputList, buttonElement);
 
-    inputList.forEach((inputElement) => {
+    inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
         checkInputValidity(inputElement, config);
         toggleButtonState(inputList, buttonElement);
@@ -50,13 +50,13 @@ const hasInvalidInput = (inputList) => {
 // Сделать кнопку активной
 const activateButton = (config, buttonElement) => {
   buttonElement.classList.remove(config.inactiveButtonClass);
-  buttonElement.disabled = '';
+  buttonElement.disabled = false;
 }
 
 // Сделать кнопку неактивной
 const disableButton = (config, buttonElement) => {
   buttonElement.classList.add(config.inactiveButtonClass);
-  buttonElement.disabled = 'disabled';
+  buttonElement.disabled = true;
 }
 
 // функция переключения состояния кнопки
@@ -80,3 +80,5 @@ const config = {
 };
 
 enableValidation(config);
+
+export { disableButton, config };
