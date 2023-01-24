@@ -55,15 +55,18 @@ const cardFormElement = popupCardFormElement.querySelector('.popup__form');
 const placeNameInput = cardFormElement.querySelector('#place-name');
 const placeLinkImageInput = cardFormElement.querySelector('#place-link-img');
 
+const popupImageElement = document.querySelector('.popup_card-image');
+const popupImage = popupImageElement.querySelector('.popup__image');
+const opupTitleImage = popupImageElement.querySelector('.popup__title-image');
+
 //массив попапов
 const popups = Array.from(document.querySelectorAll('.popup'));
 
 // функция обработчик нажатия на Esc (закрывает все попапы)
 function handleKeyUp(evt) {
   if (evt.key === 'Escape') {
-    popups.forEach((popup) => {
-      closePopup(popup);
-    });
+    const popupIsOpened = document.querySelector('.popup_is-opened');
+    closePopup(popupIsOpened);
   }
 }
 
@@ -92,7 +95,6 @@ function closePopup(namePopupElement) {
 function openProfilePopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  validateForm(config, profileFormElement);
 
   openPopup(popupProfileElement);
 }
@@ -109,7 +111,6 @@ function handlerFormSubmitProfile(evt) {
 // Функция открытия попапа добавления карточки на страницу
 function openAddCardPopup () {
   cardFormElement.reset();
-  validateForm(config, cardFormElement);
 
   openPopup(popupCardFormElement);
 }
@@ -139,7 +140,9 @@ buttonOpenPopupCard.addEventListener('click', () => openAddCardPopup(popupCardFo
 
 //Функция создания новой карточки карточки
 const addCard = (cardData) => {
-  return  new Card(cardData, '#card-template').createCard();
+  return  new Card(
+    cardData, '#card-template', openPopup, popupImageElement, popupImage, opupTitleImage
+    ).createCard();
 }
 
 //Функция добавления карточки на страницу
@@ -161,5 +164,7 @@ popups.forEach((popup) => {
 const validateForm = (config, formElement) => {
   return new FormValidator(config, formElement).enableValidation();
 }
-
-export default openPopup;
+// включить валидацию форм профиля
+validateForm(config, profileFormElement);
+// включить валидацию форм карточки
+validateForm(config, cardFormElement);
