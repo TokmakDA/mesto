@@ -5,28 +5,28 @@ import { FormValidator } from './FormValidator.js';
 const initialCards = [
   {
     name: 'Калининград',
-    link: './images/Kalinigrad.jpeg'
+    link: './images/Kalinigrad.jpeg',
   },
   {
     name: 'Санкт-Петербург',
-    link: './images/St_Petersburg.jpeg'
+    link: './images/St_Petersburg.jpeg',
   },
   {
     name: 'Нижний Новгород',
-    link: './images/NizhnyNovgorod.jpeg'
+    link: './images/NizhnyNovgorod.jpeg',
   },
   {
     name: 'Дюкинский карьер',
-    link: './images/DukinQuarry.jpeg'
+    link: './images/DukinQuarry.jpeg',
   },
   {
     name: 'Владимир',
-    link: './images/Vladimir-Russian-village.jpeg'
+    link: './images/Vladimir-Russian-village.jpeg',
   },
   {
     name: 'Выборг',
-    link: './images/Vyborg.jpeg'
-  }
+    link: './images/Vyborg.jpeg',
+  },
 ];
 
 // Конфигуратор для валидации форм
@@ -72,10 +72,13 @@ function handleKeyUp(evt) {
 
 // Функция обработчик на закрытие попапа кликом на оверлей ил на крестик
 const handleClosePopupByClick = (evt) => {
-  if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
+  if (
+    evt.target === evt.currentTarget ||
+    evt.target.classList.contains('popup__close')
+  ) {
     closePopup(evt.currentTarget);
   }
-}
+};
 
 // функция добаления класса для попапа (открыть попап)
 function openPopup(namePopupElement) {
@@ -109,7 +112,7 @@ function handlerFormSubmitProfile(evt) {
 }
 
 // Функция открытия попапа добавления карточки на страницу
-function openAddCardPopup () {
+function openAddCardPopup() {
   cardFormElement.reset();
 
   openPopup(popupCardFormElement);
@@ -122,33 +125,38 @@ const handleFormSubmitCard = (evt) => {
   const card = {
     name: placeNameInput.value,
     link: placeLinkImageInput.value,
-  }
+  };
 
   renderCard(card, cardsListElement);
   closePopup(popupCardFormElement);
-}
+};
 
 //Функция создания новой карточки карточки
 const addCard = (cardData) => {
-  return  new Card(
-    cardData, '#card-template', openPopup, popupImageElement, popupImage, opupTitleImage
-    ).createCard();
-}
+  return new Card(
+    cardData,
+    '#card-template',
+    openPopup,
+    popupImageElement,
+    popupImage,
+    opupTitleImage
+  ).createCard();
+};
 
 //Функция добавления карточки на страницу
 const renderCard = (cardData, wrapElement) => {
   wrapElement.prepend(addCard(cardData));
-}
+};
 
 // колбэк-функция для добавления карточек из массива
-initialCards.forEach(function(cardData) {
+initialCards.forEach(function (cardData) {
   renderCard(cardData, cardsListElement);
 });
 
 //создаем экземпляр класса FormValidator с вызовом метода запуска валидации
 const validateForm = (config, formElement) => {
   return new FormValidator(config, formElement).enableValidation();
-}
+};
 // включить валидацию форм профиля
 validateForm(config, profileFormElement);
 // включить валидацию форм карточки
@@ -156,7 +164,7 @@ validateForm(config, cardFormElement);
 
 popups.forEach((popup) => {
   // Добавить Слушатель на закрытие попапа кликом на оверлей и на крестик
-  popup.addEventListener('click', handleClosePopupByClick)
+  popup.addEventListener('click', handleClosePopupByClick);
 });
 
 //Слушатель клика на кнопку сохранение профиля
@@ -167,4 +175,6 @@ profileEditButtonElement.addEventListener('click', openProfilePopup);
 // Слушатель клика сохранения новой карточки
 cardFormElement.addEventListener('submit', handleFormSubmitCard);
 // Слушатель клика для открытия попапа добавления карточек
-buttonOpenPopupCard.addEventListener('click', () => openAddCardPopup(popupCardFormElement));
+buttonOpenPopupCard.addEventListener('click', () =>
+  openAddCardPopup(popupCardFormElement)
+);

@@ -1,5 +1,4 @@
 class FormValidator {
-
   constructor(config, formElement) {
     this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
@@ -8,8 +7,12 @@ class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._formElement = formElement;
-    this._inputList = [...this._formElement.querySelectorAll(this._inputSelector)];
-    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+    this._inputList = [
+      ...this._formElement.querySelectorAll(this._inputSelector),
+    ];
+    this._buttonElement = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
   }
 
   // метод отображения ошибки ввода
@@ -40,34 +43,34 @@ class FormValidator {
     return inputList.every((inputElement) => {
       return inputElement.validity.valid; // проверит все поля и вернет true, если все поля валидны
     });
-  }
+  };
 
   // Сделать кнопку активной
   _activateButton = (buttonElement) => {
     buttonElement.classList.remove(this._inactiveButtonClass);
     buttonElement.disabled = false;
-  }
+  };
 
   // Сделать кнопку неактивной
   _disableButton = (buttonElement) => {
     buttonElement.classList.add(this._inactiveButtonClass);
     buttonElement.disabled = true;
-  }
+  };
 
   // метод переключения состояния кнопки
   _toggleButtonState = (inputList, buttonElement) => {
-    if ( this._hasInvalidInput(inputList)) {
+    if (this._hasInvalidInput(inputList)) {
       // сделай кнопку активной
       this._activateButton(buttonElement);
     } else {
       // иначе сделай кнопку неактивной
       this._disableButton(buttonElement);
     }
-  }
+  };
 
   enableValidation = () => {
     this._toggleButtonState(this._inputList, this._buttonElement);
-    this._inputList.forEach(inputElement => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
         this._toggleButtonState(this._inputList, this._buttonElement);
@@ -77,4 +80,3 @@ class FormValidator {
 }
 
 export { FormValidator };
-
