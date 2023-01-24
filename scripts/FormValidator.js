@@ -1,6 +1,5 @@
 class FormValidator {
 
-
   constructor(config, formElement) {
     this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
@@ -13,22 +12,21 @@ class FormValidator {
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
   }
 
-
-  // Функция отображения ошибки ввода
+  // метод отображения ошибки ввода
   _showInputError = (inputElement, errorElement) => {
     errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this._errorClass);
     inputElement.classList.add(this._inputErrorClass);
   };
 
-  // Функция скрывающая ошибки ввода
+  // метод скрывающий ошибки ввода
   _hideInputError = (inputElement, errorElement) => {
     errorElement.textContent = '';
     errorElement.classList.remove(this._errorClass);
     inputElement.classList.remove(this._inputErrorClass);
   };
 
-  // функция проверки валидности ввода
+  // метод проверки валидности ввода
   _checkInputValidity = (inputElement) => {
     this._errorElement = document.querySelector(`#${inputElement.id}-error`);
     if (inputElement.validity.valid) {
@@ -37,8 +35,6 @@ class FormValidator {
       this._showInputError(inputElement, this._errorElement);
     }
   };
-
-
 
   _hasInvalidInput = (inputList) => {
     return inputList.every((inputElement) => {
@@ -58,7 +54,7 @@ class FormValidator {
     buttonElement.disabled = true;
   }
 
-  // функция переключения состояния кнопки
+  // метод переключения состояния кнопки
   _toggleButtonState = (inputList, buttonElement) => {
     if ( this._hasInvalidInput(inputList)) {
       // сделай кнопку активной

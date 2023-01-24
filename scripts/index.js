@@ -29,6 +29,7 @@ const initialCards = [
   }
 ];
 
+// Конфигуратор для валидации форм
 const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -37,7 +38,6 @@ const config = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible',
 };
-
 
 const popupProfileElement = document.querySelector('.popup_profile-form');
 const profileInfo = document.querySelector('.profile');
@@ -49,47 +49,14 @@ const nameInput = profileFormElement.querySelector('#profile-name');
 const jobInput = profileFormElement.querySelector('#profile-job');
 
 const cardsListElement = document.querySelector('.cards');
-// const cardTemplate = document.querySelector('#card-template').content.querySelector('.card');
 const popupCardFormElement = document.querySelector('.popup_card-form');
 const buttonOpenPopupCard = profileInfo.querySelector('.profile__add-button');
 const cardFormElement = popupCardFormElement.querySelector('.popup__form');
 const placeNameInput = cardFormElement.querySelector('#place-name');
 const placeLinkImageInput = cardFormElement.querySelector('#place-link-img');
-const buttonElementCardForm = cardFormElement.querySelector('.popup__button')
-
-// const popupImageElement = document.querySelector('.popup_card-image');
-// const popupImage = popupImageElement.querySelector('.popup__image');
-// const popupTitleImage = popupImageElement.querySelector('.popup__title-image');
 
 //массив попапов
 const popups = Array.from(document.querySelectorAll('.popup'));
-
-// //Функция создания карточек
-// function createCards (cardData) {
-
-//   const card = cardTemplate.cloneNode(true);
-//   const cardName = card.querySelector('.card__mane-card');
-//   const buttonDeleteCard = card.querySelector('.card__trash');
-//   const buttonLikeCard = card.querySelector('.card__like-button');
-//   const imageCard = card.querySelector('.card__image');
-//   imageCard.src = cardData.link;
-//   cardName.textContent = imageCard.alt = cardData.name;
-
-//   // Слушатели кликов для кнопок лайка и удаления
-//   buttonDeleteCard.addEventListener('click', handleButtonDeleteCardClick);
-//   buttonLikeCard.addEventListener('click', handleButtonLikeCardClick);
-
-//   // Слушатель клика для открытия картинки
-//   imageCard.addEventListener('click', () => openImagePopup(cardData));
-
-//   return card;
-// }
-
-// //Функция добавления карточки на страницу
-// const renderCard = (cardData, wrapElement) => {
-//   const element = createCards(cardData);
-//   wrapElement.prepend(element);
-// }
 
 // функция обработчик нажатия на Esc (закрывает все попапы)
 function handleKeyUp(evt) {
@@ -143,6 +110,7 @@ function handlerFormSubmitProfile(evt) {
 function openAddCardPopup () {
   cardFormElement.reset();
   validateForm(config, cardFormElement);
+
   openPopup(popupCardFormElement);
 }
 // Функция добавления новой карточки из попап и закрытие попапа
@@ -157,23 +125,6 @@ const handleFormSubmitCard = (evt) => {
   renderCard(card, cardsListElement);
   closePopup(popupCardFormElement);
 }
-
-// // функция передающия данные при открытии попапа карточки
-// function openImagePopup (cardData) {
-//   popupImage.src = cardData.link;
-//   popupTitleImage.textContent = popupImage.alt = cardData.name;
-
-//   openPopup(popupImageElement);
-// }
-
-// // Функция обработчик для лайка карточки
-// const handleButtonLikeCardClick = (evt) => {
-//   evt.target.classList.toggle('card__like-button_active');
-// }
-// // Функция обработчик для удаления карточки
-// const handleButtonDeleteCardClick = (evt) => {
-//   evt.target.closest('.card').remove();
-// }
 
 //Слушатель клика на кнопку сохранение профиля
 profileFormElement.addEventListener('submit', handlerFormSubmitProfile);
@@ -206,6 +157,7 @@ popups.forEach((popup) => {
   popup.addEventListener('click', handleClosePopupByClick)
 });
 
+//создаем экземпляр класса FormValidator с вызовом метода запуска валидации
 const validateForm = (config, formElement) => {
   return new FormValidator(config, formElement).enableValidation();
 }
