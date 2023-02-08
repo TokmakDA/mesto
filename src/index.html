@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <script type="module" src="./pages/index.js" defer></script>
+    <title>Mesto</title>
+  </head>
+  <body class="page">
+    <!-- Header -->
+    <header class="header">
+      <img
+        class="header__logo"
+        src="./images/mesto-logo-white.svg"
+        alt="Логотип"
+     >
+    </header>
+
+    <!-- Content -->
+    <main class="content page__content">
+      <!-- Profile -->
+      <section class="profile content__section">
+        <img
+          class="profile__avatar"
+          src="./images/avatar.jpg"
+          alt="Аватар"
+        >
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button"></button>
+          <p class="profile__job">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+
+      <!-- Cards -->
+      <section class="content__section">
+        <ul class="cards">
+
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+
+    <!-- Pop-Up -->
+      <!-- Pop-Up Profile -->
+    <div class="popup popup_profile-form">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <form class="popup__form" name="profile-form" novalidate>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input
+            type="text"
+            class="popup__input"
+            id="profile-name"
+            placeholder="Имя"
+            value="Жак-Ив Кусто"
+            name="profileName"
+            minlength="2"
+            maxlength="40"
+            required
+          >
+          <span id="profile-name-error" class="popup__error"></span>
+          <input
+            type="text"
+            class="popup__input"
+            id="profile-job"
+            placeholder="О себе"
+            value="Исследователь океана"
+            name="profileJob"
+            minlength="2"
+            maxlength="200"
+            required
+          >
+          <span id="profile-job-error" class="popup__error"></span>
+          <input
+            type="submit"
+            class="popup__button"
+            value="Сохранить"
+            required
+          >
+        </form>
+      </div>
+    </div>
+      <!-- Pop-Up Card -->
+    <div class="popup popup_card-form">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <form class="popup__form" name="new-card-form" novalidate>
+          <h2 class="popup__title">Новое место</h2>
+          <input
+            type="text"
+            class="popup__input"
+            id="place-image-name"
+            placeholder="Название"
+            value=""
+            name="placeImageName"
+            minlength="2"
+            maxlength="40"
+            required
+          >
+          <span id="place-image-name-error" class="popup__error"></span>
+          <input
+            type="url"
+            class="popup__input"
+            id="place-image-link"
+            placeholder="Ссылка на картинку"
+            value=""
+            name="placeImageLink"
+            required
+          >
+          <span id="place-image-link-error" class="popup__error"></span>
+          <input
+            type="submit"
+            class="popup__button"
+            value="Сохранить"
+          >
+        </form>
+      </div>
+    </div>
+      <!-- Pop-Up Card Image -->
+    <div class="popup popup_card-image">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+        <img
+          class="popup__image"
+          src="#"
+          alt=""
+        >
+        <h2 class="popup__title-image"></h2>
+      </div>
+    </div>
+
+    <!-- Template -->
+    <template id="card-template">
+      <li class="card">
+        <button class="card__trash" type="button"></button>
+        <img
+          class="card__image"
+          src="#"
+          alt=""
+        >
+        <div class="card__caption">
+          <h2 class="card__mane-card"></h2>
+          <button class="card__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
+
+  </body>
+</html>
