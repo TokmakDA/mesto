@@ -1,4 +1,4 @@
-class FormValidator {
+export class FormValidator {
   constructor(config, formElement) {
     this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
@@ -39,44 +39,42 @@ class FormValidator {
     }
   };
 
-  _hasInvalidInput = (inputList) => {
-    return inputList.every((inputElement) => {
+  _hasInvalidInput() {
+    return this._inputList.every((inputElement) => {
       return inputElement.validity.valid; // проверит все поля и вернет true, если все поля валидны
     });
   };
 
   // Сделать кнопку активной
-  _activateButton = (buttonElement) => {
-    buttonElement.classList.remove(this._inactiveButtonClass);
-    buttonElement.disabled = false;
+  _activateButton() {
+    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._buttonElement.disabled = false;
   };
 
   // Сделать кнопку неактивной
-  _disableButton = (buttonElement) => {
-    buttonElement.classList.add(this._inactiveButtonClass);
-    buttonElement.disabled = true;
+  disableButton() {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.disabled = true;
   };
 
   // метод переключения состояния кнопки
-  _toggleButtonState = (inputList, buttonElement) => {
-    if (this._hasInvalidInput(inputList)) {
+  _toggleButtonState = () => {
+    if (this._hasInvalidInput()) {
       // сделай кнопку активной
-      this._activateButton(buttonElement);
+      this._activateButton();
     } else {
       // иначе сделай кнопку неактивной
-      this._disableButton(buttonElement);
+      this.disableButton();
     }
   };
 
   enableValidation = () => {
-    this._toggleButtonState(this._inputList, this._buttonElement);
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(this._inputList, this._buttonElement);
+        this._toggleButtonState();
       });
     });
   };
 }
-
-export { FormValidator };

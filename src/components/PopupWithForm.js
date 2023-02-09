@@ -1,12 +1,11 @@
-import { Popup } from "./Popup.js";
+import { Popup } from './Popup.js';
 
 export class PopupWithForm extends Popup {
   constructor(popupSelector, callbackSubmitForm) {
     super(popupSelector);
     this.callbackSubmitForm = callbackSubmitForm;
     this._formElement = this._popupElement.querySelector('.popup__form');
-    this._inputs = this._formElement.querySelectorAll('.popup__input')
-
+    this._inputs = this._formElement.querySelectorAll('.popup__input');
   }
 
   //получить значения инпутов
@@ -16,7 +15,6 @@ export class PopupWithForm extends Popup {
       this._inputValues[input.name] = input.value;
     });
     return this._inputValues;
-
   }
 
   //обработчик сабмита формы
@@ -24,7 +22,7 @@ export class PopupWithForm extends Popup {
     evt.preventDefault();
     this.callbackSubmitForm(this._getInputValues());
     this.close();
-  }
+  };
 
   //установить слушатели событий
   setEventListeners() {
@@ -36,7 +34,6 @@ export class PopupWithForm extends Popup {
   //Закрыть попап
   close() {
     super.close();
-    this._formElement.reset()
-    console.log('Данные формы сбросились') /* Удалить Тест */
+    this._formElement.reset();
   }
 }

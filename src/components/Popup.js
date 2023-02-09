@@ -5,7 +5,6 @@ export class Popup {
 
   //Метот открытия попапа
   open() {
-    console.log('Open');
     this._popupElement.classList.add('popup_is-opened');
     this.setEventListeners();
   }
@@ -21,7 +20,7 @@ export class Popup {
     if (evt.key === 'Escape') {
       this.close();
     }
-  }
+  };
 
   //обработчик события клик на крестик или оверлей, потом закрыть попап
   _handleClosePopupByClick = (evt) => {
@@ -42,7 +41,9 @@ export class Popup {
   //удалить слушатели событий
   removeEventListeners() {
     document.removeEventListener('keyup', this._handleEscClose);
-    this._popupElement.removeEventListener('click', this._handleClosePopupByClick);
+    this._popupElement.removeEventListener(
+      'click',
+      this._handleClosePopupByClick
+    );
   }
-
 }

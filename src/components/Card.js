@@ -1,20 +1,10 @@
-class Card {
-  constructor(
-    cardData,
-    templateSelector,
-    handleCardClick,
-    popupImageElement,
-    popupImage,
-    popupTitleImage
-  ) {
+export class Card {
+  constructor(cardData, templateSelector, handleCardClick) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._templateSelector = templateSelector;
-    // параметры для обработчика открытия попапа карточки
+    // Обработчик открытия попапа карточки с картинкой
     this._handleCardClick = handleCardClick;
-    this._popupImageElement = popupImageElement;
-    this._popupImage = popupImage;
-    this._popupTitleImage = popupTitleImage;
   }
 
   //Обработчик клика на кнопку удаления карточки
@@ -26,15 +16,6 @@ class Card {
   _handleButtonLikeCardClick(evt) {
     evt.target.classList.toggle('card__like-button_active');
   }
-
-  // //Обработчик для открытия попапа карточки
-  // _openImagePopup(name, link) {
-  //   this._popupImage.src = link;
-  //   // this._popupImage.alt = name;
-  //   this._popupTitleImage.textContent = name;
-
-  //   this._handleCardClick(this._popupImageElement);
-  // }
 
   // Слушатели событий
   _setEventListener() {
@@ -77,5 +58,3 @@ class Card {
     return this._element;
   }
 }
-
-export { Card };
