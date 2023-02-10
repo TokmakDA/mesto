@@ -109,7 +109,6 @@ const validateFormProfile = new FormValidator(config, profileFormElement);
 // включить валидацию форм информации о Профиле
 validateFormProfile.enableValidation();
 
-
 //включаем слушатели событий для Попапов
 popupFormProfile.setEventListeners();
 popupFormCard.setEventListeners();
