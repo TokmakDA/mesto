@@ -10,6 +10,7 @@ module.exports = {
           chrome: '64',
           safari: '11.1',
         },
+        corejs: 3.27,
         useBuiltIns: 'entry',
       },
     ],
