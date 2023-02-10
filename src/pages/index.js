@@ -41,8 +41,9 @@ const userInfo = new UserInfo({
 
 // Функция открытия попапа редактирования профиля
 const openProfilePopup = () => {
-  nameInput.value = userInfo.getUserInfo().userName;
-  jobInput.value = userInfo.getUserInfo().userJob;
+  const profileInfo = userInfo.getUserInfo();
+  nameInput.value = profileInfo.userName;
+  jobInput.value = profileInfo.userJob;
 
   //Открыть попап в формой редактирования профиля
   popupFormProfile.open();
@@ -57,7 +58,7 @@ function handlerFormSubmitProfile(inputValues) {
 }
 const openFormCardPopup = () => {
   //отключаем кнопку, чтобы при повторном открытии карточки кнопка была неактивна
-  validateForm(config, cardFormElement).disableButton();
+  validateFormCard.disableButton();
   //Открыть попап в формой добавления карточки
   popupFormCard.open();
 }
@@ -98,15 +99,21 @@ const section = new Section(
 //добавление карточек из массива
 section.renderItems();
 
-//создаем экземпляр класса FormValidator
-const validateForm = (config, formElement) => {
-  return new FormValidator(config, formElement)
-};
+//создаем экземпляр класса FormValidator форм добавления карточки
+const validateFormCard = new FormValidator(config, cardFormElement);
+// // включить валидацию форм добавления карточки
+validateFormCard.enableValidation();
 
-// включить валидацию форм профиля
-validateForm(config, profileFormElement).enableValidation();
-// включить валидацию форм карточки
-validateForm(config, cardFormElement).enableValidation();
+//создаем экземпляр класса FormValidator форм информации о Профиле
+const validateFormProfile = new FormValidator(config, profileFormElement);
+// включить валидацию форм информации о Профиле
+validateFormProfile.enableValidation();
+
+
+//включаем слушатели событий для Попапов
+popupFormProfile.setEventListeners();
+popupFormCard.setEventListeners();
+popupWithImage.setEventListeners();
 
 //Слушатель клика для аткрытия попапа профиля
 profileEditButtonElement.addEventListener(
