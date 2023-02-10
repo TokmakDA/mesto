@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <script type="module" src="./pages/index.js" defer></script>
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
+    <!-- <script type="module" src="./pages/index.js" defer></script> -->
     <title>Mesto</title>
   </head>
   <body class="page">
@@ -12,7 +12,7 @@
     <header class="header">
       <img
         class="header__logo"
-        src="./images/mesto-logo-white.svg"
+        src="<%=require('./images/mesto-logo-white.svg')%>"
         alt="Логотип"
       />
     </header>
@@ -21,7 +21,11 @@
     <main class="content page__content">
       <!-- Profile -->
       <section class="profile content__section">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар" />
+        <img
+          class="profile__avatar"
+          src="<%=require('./images/avatar.jpg')%>"
+          alt="Аватар"
+        />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button"></button>

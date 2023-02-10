@@ -1,3 +1,5 @@
+import './index.css';
+
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
@@ -7,7 +9,6 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 
 import {
-  initialCards,
   config,
   popupProfileElement,
   profileInfo,
@@ -19,6 +20,8 @@ import {
   buttonOpenPopupCard,
   cardFormElement
 } from '../utils/constants.js';
+
+import { initialCards } from '../utils/initialCards.js';
 
 const popupFormProfile = new PopupWithForm(
   '.popup_profile-form',
