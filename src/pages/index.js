@@ -101,15 +101,15 @@ section.renderItems();
 
 //создаем экземпляр класса FormValidator форм добавления карточки
 const validateFormCard = new FormValidator(config, cardFormElement);
-// // включить валидацию форм добавления карточки
+//вызываем валидацию форм добавления карточки
 validateFormCard.enableValidation();
 
 //создаем экземпляр класса FormValidator форм информации о Профиле
 const validateFormProfile = new FormValidator(config, profileFormElement);
-// включить валидацию форм информации о Профиле
+//вызываем валидацию форм информации о Профиле
 validateFormProfile.enableValidation();
 
-//включаем слушатели событий для Попапов
+//вызываем слушатели событий для Попапов
 popupFormProfile.setEventListeners();
 popupFormCard.setEventListeners();
 popupWithImage.setEventListeners();
@@ -119,7 +119,7 @@ profileEditButtonElement.addEventListener(
   'click', () => openProfilePopup()
 );
 
-// Слушатель клика для открытия попапа добавления карточек
+//Слушатель клика для открытия попапа добавления карточек
 buttonOpenPopupCard.addEventListener(
   'click', () => openFormCardPopup()
 );
