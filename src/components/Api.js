@@ -13,8 +13,7 @@ export class Api {
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-      )
-      .catch((err) => console.log(err));
+      );
   }
 
   // Загрузка карточек с сервера
@@ -26,8 +25,7 @@ export class Api {
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-      )
-      .catch((err) => console.log(err));
+      );
   }
 
   // Редактирование профиля (Данные уходят на сервер)
@@ -42,8 +40,7 @@ export class Api {
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-      )
-      .catch((err) => console.log(err));
+      );
   }
 
   // Добавление новой карточки. полученный ответ нужно отрендерить на страницу
@@ -59,8 +56,7 @@ export class Api {
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-      )
-      .catch((err) => console.log(err));
+      );
   }
 
   // Удаление карточки
@@ -72,8 +68,7 @@ export class Api {
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-      )
-      .catch((err) => console.log(err));
+      );
   }
 
   // Постановка  лайка
@@ -85,8 +80,7 @@ export class Api {
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-      )
-      .catch((err) => console.log(err));
+      );
   }
 
   // Cнятие лайка
@@ -98,8 +92,7 @@ export class Api {
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-      )
-      .catch((err) => console.log(err));
+      );
   }
 
   // Обновление аватара пользователя (Данные уходят на сервер)
@@ -114,8 +107,7 @@ export class Api {
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-      )
-      .catch((err) => console.log(err));
+      );
   }
 
   // закгружаем первичную информацию с сервера

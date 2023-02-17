@@ -1,7 +1,7 @@
 .profile__avatar-edit-buttom {
   height: 120px;
   width: 120px;
-  border-radius: 45%;
+  border-radius: 50%;
   border: none;
   box-sizing: border-box;
   background: center no-repeat url(../../../images/pencil.svg);
@@ -14,7 +14,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
 }
 
 .profile__avatar-edit-buttom:hover {

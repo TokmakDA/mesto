@@ -72,11 +72,9 @@ function handlerFormSubmitProfile(inputValues) {
         userJob: result.about
       })
     })
+    .then(() => popupFormProfile.close())
     .catch((err) => console.log(err))
-    .finally(() => {
-      popupFormProfile.renderLoading(false);
-      popupFormProfile.close();
-    });
+    .finally(() => popupFormProfile.renderLoading(false));
 };
 
 function handlerFormSubmitAvatar(inputValues) {
@@ -85,11 +83,9 @@ function handlerFormSubmitAvatar(inputValues) {
     .then(result => {
       userInfo.setUserAvatar(result.avatar)
     })
+    .then(() => popupFormAvarar.close())
     .catch((err) => console.log(err))
-    .finally(() => {
-      popupFormAvarar.renderLoading(false);
-      popupFormAvarar.close();
-    });
+    .finally(() => popupFormAvarar.renderLoading(false));
 };
 
 const openFormCardPopup = () => {
@@ -110,11 +106,9 @@ function handleFormSubmitCard(inputValues) {
     .then(result => {
       section.addItemPrepend(addCard(result))
     })
+    .then(() => popupFormCard.close())
     .catch((err) => console.log(err))
-    .finally(() => {
-      popupFormCard.renderLoading(false);
-      popupFormCard.close();
-    });
+    .finally(() => popupFormCard.renderLoading(false));
 };
 
 // нажатие на кнопку для удаления карточки
@@ -125,15 +119,13 @@ const handleButtonDeleteCardClick = (cardElement, cardId) => {
 function handleDeleteCardSubmit(cardElement, cardId) {
   popupDeleteCard.renderLoading(true);
   api.deleteCard(cardId)
-    .then(
-      cardElement.remove(),
+    .then(() => {
+      cardElement.remove();
       cardElement = null
-    )
+    })
+    .then(() => popupDeleteCard.close())
     .catch((err) => console.log(err))
-    .finally(() => {
-      popupDeleteCard.renderLoading(false);
-      popupDeleteCard.close();
-    });
+    .finally(() => popupDeleteCard.renderLoading(false));
 };
 
 // Функция обработчик клика на карточку
@@ -243,5 +235,4 @@ api.getInitialsData()
     section.renderItems(result[1]);
   }
   )
-  .catch((err) => console.log(err))
-  .finally;
+  .catch((err) => console.log(err));

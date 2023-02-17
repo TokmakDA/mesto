@@ -10,4 +10,5 @@
   visibility: hidden;
   opacity: 0;
   transition:  0.7s;
+  z-index: 2;
 }
