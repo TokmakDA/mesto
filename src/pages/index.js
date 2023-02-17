@@ -125,7 +125,10 @@ function handleDeleteCardSubmit(cardElement, cardId) {
     })
     .then(() => popupDeleteCard.close())
     .catch((err) => console.log(err))
-    .finally(() => popupDeleteCard.renderLoading(false));
+    .finally(() => {
+      popupDeleteCard.renderLoading(false);
+      popupDeleteCard.close()
+    });
 };
 
 // Функция обработчик клика на карточку
