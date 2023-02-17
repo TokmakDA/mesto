@@ -125,7 +125,6 @@ const handleButtonDeleteCardClick = (cardElement, cardId) => {
 function handleDeleteCardSubmit(cardElement, cardId) {
   popupDeleteCard.renderLoading(true);
   api.deleteCard(cardId)
-    .then(result => console.log(result))
     .then(
       cardElement.remove(),
       cardElement = null
