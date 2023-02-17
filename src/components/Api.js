@@ -1,0 +1,125 @@
+export class Api {
+  constructor(options) {
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
+  }
+
+  //Загрузка информации о пользователе с сервера
+  // запрос GET
+  getInfoUserMe() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'GET',
+      headers: this._headers,
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+      )
+      .catch((err) => console.log(err));
+  }
+
+  // Загрузка карточек с сервера
+  // запрос GET
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: 'GET',
+      headers: this._headers,
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+      )
+      .catch((err) => console.log(err));
+  }
+
+  // Редактирование профиля (Данные уходят на сервер)
+  patchUserInfo(UserNameNew, UserAboutNew) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: UserNameNew,
+        about: UserAboutNew,
+      }),
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+      )
+      .catch((err) => console.log(err));
+  }
+
+  // Добавление новой карточки. полученный ответ нужно отрендерить на страницу
+  // запрос POST
+  postNewCard(card) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: `${card.name}`,
+        link: `${card.link}`,
+      }),
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+      )
+      .catch((err) => console.log(err));
+  }
+
+  // Удаление карточки
+  // DELETE-запрос:
+  deleteCard(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+      )
+      .catch((err) => console.log(err));
+  }
+
+  // Постановка  лайка
+  // Чтобы лайкнуть карточку, отправьте PUT-запрос:
+  addLikeCard(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+      method: 'PUT',
+      headers: this._headers,
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+      )
+      .catch((err) => console.log(err));
+  }
+
+  // Cнятие лайка
+  // Чтобы убрать лайк, нужно отправить DELETE-запрос:
+  deleteLikeCard(cardID) {
+    return fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+      )
+      .catch((err) => console.log(err));
+  }
+
+  // Обновление аватара пользователя (Данные уходят на сервер)
+  // Запрос PATCH
+  patchUserAvatar(LinkAvatar) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: LinkAvatar,
+      }),
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+      )
+      .catch((err) => console.log(err));
+  }
+
+  // закгружаем первичную информацию с сервера
+  getInitialsData() {
+    return Promise.all([this.getInfoUserMe(), this.getInitialCards()])
+  }
+}
