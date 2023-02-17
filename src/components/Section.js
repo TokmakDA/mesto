@@ -1,19 +1,25 @@
+import { UserInfo } from "./UserInfo";
+
 export class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._renderedItems = items;
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer;
     this._container = document.querySelector(`${containerSelector}`);
   }
 
-  //Рендеринг элементов
-  renderItems() {
-    this._renderedItems.forEach((item) => {
-    this._renderer(item);
+  // Рендеринг элементов
+  renderItems(items, userInfo) {
+    items.forEach((item) => {
+      this._renderer(item, userInfo);
     });
   }
 
   // Добавить элемент в разметку
   addItem(element) {
+    this._container.append(element);
+  }
+
+  // Добавить элемент в разметку
+  addItemPrepend(element) {
     this._container.prepend(element);
   }
 }

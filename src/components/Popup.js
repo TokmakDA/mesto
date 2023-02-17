@@ -3,26 +3,26 @@ export class Popup {
     this._popupElement = document.querySelector(`${selectorPopup}`);
   }
 
-  //Метот открытия попапа
+  // Метот открытия попапа
   open() {
     this._popupElement.classList.add('popup_is-opened');
     this._setKeyupEventListeners();
   }
 
-  //Метот закрытия попапа
+  // Метот закрытия попапа
   close() {
     this._popupElement.classList.remove('popup_is-opened');
     this._removeKeyupEventListeners();
   }
 
-  //обработчик события нажатия кнопки Эскейпт для закрытия попапа
+  // обработчик события нажатия кнопки Эскейпт для закрытия попапа
   _handleEscClose = (evt) => {
     if (evt.key === 'Escape') {
       this.close();
     }
   };
 
-  //обработчик события клик на крестик или оверлей, потом закрыть попап
+  // обработчик события клик на крестик или оверлей, потом закрыть попап
   _handleClosePopupByClick = (evt) => {
     if (
       evt.target === evt.currentTarget ||
@@ -32,7 +32,7 @@ export class Popup {
     }
   };
 
-  //установить слушатели событий
+  // установить слушатели событий
   setEventListeners() {
     this._popupElement.addEventListener(
       'click',
@@ -40,7 +40,7 @@ export class Popup {
     );
   }
 
-  //удалить слушатели событий
+  // удалить слушатели событий
   removeEventListeners() {
     this._popupElement.removeEventListener(
       'click',
@@ -48,12 +48,12 @@ export class Popup {
     );
   }
 
-  //установить слушатель событий нажатия клавиш
+  // установить слушатель событий нажатия клавиш
   _setKeyupEventListeners() {
     document.addEventListener('keyup', this._handleEscClose);
   }
 
-  //удалить слушатель событий нажатия клавиш
+  // удалить слушатель событий нажатия клавиш
   _removeKeyupEventListeners() {
     document.removeEventListener('keyup', this._handleEscClose);
   }
